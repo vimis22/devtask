@@ -1,19 +1,21 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 
-const LoginScreen = ({ navigation }: any) => {
+const SignupPage = ({ navigation }: any) => {
     return (
         <View style={styles.pageContainer}>
-            <Text style={styles.sectionTitle}>LOGIN</Text>
+            <Text style={styles.sectionTitle}>SIGNUP</Text>
             <Text style={styles.textInputLabel}>USERID:</Text>
             <TextInput style={styles.inputFieldText} placeholder={'Please enter your UserID'}/>
             <Text style={styles.textInputLabel}>PASSWORD:</Text>
             <TextInput style={styles.inputFieldText} placeholder={'Please enter your Password'} secureTextEntry={true}/>
+            <Text style={styles.textInputLabel}>CONFIRM PASSWORD:</Text>
+            <TextInput style={styles.inputFieldText} placeholder={'Please confirm your Password'} secureTextEntry={true}/>
             <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('RoomlistPage')}>
-                <Text style={styles.buttonText}>ENTER</Text>
+                <Text style={styles.buttonText}>REGISTER</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
-                <Text style={styles.buttonText}>Don't have an Account? Signup</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('LoginPage')}>
+                <Text style={styles.buttonText}>Already have an Account? Login</Text>
             </TouchableOpacity>
         </View>
     );
@@ -61,4 +63,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default SignupPage;
