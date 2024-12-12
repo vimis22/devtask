@@ -5,14 +5,25 @@ const LoginPage = ({ navigation }: any) => {
     return (
         <View style={styles.pageContainer}>
             <Text style={styles.sectionTitle}>LOGIN</Text>
+
             <Text style={styles.textInputLabel}>USERID:</Text>
+
             <TextInput style={styles.inputFieldText} placeholder={'Please enter your UserID'}/>
             <Text style={styles.textInputLabel}>PASSWORD:</Text>
+
             <TextInput style={styles.inputFieldText} placeholder={'Please enter your Password'} secureTextEntry={true}/>
+            <Text style={styles.textInputLabel}>ADDITIONAL LOGIN:</Text>
+
+            <View style={styles.additionalLoginContainer}>
+                <Text style={styles.additionalLoginButtons}>GOOGLE</Text>
+                <Text style={styles.additionalLoginButtons}>FACEBOOK</Text>
+            </View>
+
             <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('RoomlistPage')}>
                 <Text style={styles.buttonText}>ENTER</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
+
+            <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
                 <Text style={styles.buttonText}>Don't have an Account? Signup</Text>
             </TouchableOpacity>
         </View>
@@ -35,7 +46,7 @@ const styles = StyleSheet.create({
     textInputLabel: {
         color: 'white',
         fontSize: 16,
-        marginBottom: 5,
+        marginBottom: 8,
     },
     inputFieldText: {
         backgroundColor: 'white',
@@ -58,6 +69,21 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 15,
         textDecorationLine: 'underline',
+    },
+    additionalLoginContainer: {
+        flexDirection: 'row',
+        gap: 80,
+        marginLeft: 55,
+        marginBottom: 10,
+        marginTop: 8,
+    },
+    additionalLoginButtons: {
+        backgroundColor: '#0078ff',
+        borderRadius: 5,
+        padding: 10,
+        alignItems: 'center',
+        color: 'white',
+        fontWeight: '600',
     },
 });
 
