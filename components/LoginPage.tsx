@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 
-const LoginScreen = ({ navigation }: any) => {
+const LoginPage = ({ navigation }: any) => {
     return (
         <View style={styles.pageContainer}>
             <Text style={styles.sectionTitle}>LOGIN</Text>
@@ -9,7 +9,7 @@ const LoginScreen = ({ navigation }: any) => {
             <TextInput style={styles.inputFieldText} placeholder={'Please enter your UserID'}/>
             <Text style={styles.textInputLabel}>PASSWORD:</Text>
             <TextInput style={styles.inputFieldText} placeholder={'Please enter your Password'} secureTextEntry={true}/>
-            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('RoomListScreen')}>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('RoomlistPage')}>
                 <Text style={styles.buttonText}>ENTER</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default LoginPage;

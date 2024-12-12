@@ -9,8 +9,9 @@ import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SplashScreen from './components/SplashScreen';
-import LoginScreen from './components/LoginScreen';
+import SplashPage from './components/SplashPage.tsx';
+import LoginPage from './components/LoginPage.tsx';
+import RoomlistPage from './components/RoomlistPage.tsx';
 
 const Stack = createStackNavigator();
 
@@ -18,9 +19,10 @@ export default function App() {
   return (
       <GestureHandlerRootView>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SplashScreen">
-            <Stack.Screen name="SplashScreen" component={SplashScreen} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Navigator initialRouteName="SplashPage">
+              <Stack.Screen name="SplashPage" component={SplashPage} />
+              <Stack.Screen name="LoginPage" component={LoginPage} />
+              <Stack.Screen name="RoomlistPage" component={RoomlistPage} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

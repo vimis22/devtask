@@ -1,9 +1,9 @@
 import React from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const SplashScreen = ({ navigation }: any) => {
+const SplashPage = ({ navigation }: any) => {
     return (
-        <TouchableOpacity style={styles.pageContainer} onPress={() => navigation.navigate('LoginScreen')}>
+        <TouchableOpacity style={styles.pageContainer} onPress={() => navigation.navigate('LoginPage')}>
             <Text style={styles.welcomeTitle}>Chentia</Text>
         </TouchableOpacity>
     );
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SplashScreen;
+export default SplashPage;
