@@ -18,7 +18,7 @@ const RoomlistPage = ({navigation}: any) => {
                 <Text style={styles.groupDescription}>{item.description}</Text>
             </View>
             <TouchableOpacity style={styles.buttonContainer}
-                              onPress={() => navigation.navigate('ChatScreen')}>
+                              onPress={() => navigation.navigate('ChatPage')}>
                 <Text style={styles.buttonText}>{'>'}</Text>
             </TouchableOpacity>
         </View>

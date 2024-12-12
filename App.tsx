@@ -13,6 +13,7 @@ import SplashPage from './components/SplashPage.tsx';
 import LoginPage from './components/LoginPage.tsx';
 import SignupPage from './components/SignupPage.tsx';
 import RoomlistPage from './components/RoomlistPage.tsx';
+import ChatPage from './components/ChatPage.tsx';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
               <Stack.Screen name="LoginPage" component={LoginPage} />
               <Stack.Screen name="SignupPage" component={SignupPage} />
               <Stack.Screen name="RoomlistPage" component={RoomlistPage} />
+              <Stack.Screen name="ChatPage" component={ChatPage}/>
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>
