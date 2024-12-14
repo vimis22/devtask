@@ -1,18 +1,27 @@
 import {View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import {useState} from "react";
 
+const mockMessages = [
+    {id: '1', sender: 'Vivek Misra', date: new Date().toISOString(), content: 'Message 1', icon: 'V', reciever: 'Henrik'},
+    {id: '2', sender: 'Henrik Stærkær', date: new Date().toISOString(), content: 'Message 2', icon: 'H', reciever: 'Vivek'},
+];
 const ChatPage = () => {
-    const messages = [
-        {id: '1', sender: 'Vivek', date: new Date().toISOString(), content: 'Message 1', icon: 'V'},
-        {id: '2', sender: 'Henrik', date: new Date().toISOString(), content: 'Message 2', icon: 'H'},
-    ];
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState(mockMessages);
 
+    const sendMessage = () => {
+        if (message.trim()){
+            setMessages([...messages, {id: '3', sender: 'Vivek', date: new Date().toISOString(), content: message, icon: 'V', reciever: 'Henrik'}]);
+            setMessage('');
+        }
+    };
     const renderMessageContainer = ({item}: any) => (
         <View style={styles.messageContainer}>
             <Text style={styles.profileIcon}>{item.icon}</Text>
             <View style={styles.messageContent}>
-                <Text style={styles.messageTime}>{item.date}</Text>
+                <Text style={styles.messageTime}>{item.sender} {item.date}</Text>
                 <Text style={styles.messageText}>{item.content}</Text>
-                <Text style={styles.messagePersonInfo}>Read by {item.sender}</Text>
+                <Text style={styles.messagePersonInfo}>Read by {item.reciever}</Text>
             </View>
         </View>
     );
@@ -24,8 +33,15 @@ const ChatPage = () => {
                 keyExtractor={item => item.id}
                 style={styles.messageListContainer}/>
             <View style={styles.inputContainer}>
-                <TextInput style={styles.inputFieldText}/>
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.cameraButtonContainer}>
+                    <Text style={styles.buttonText}>{'📷'}</Text>
+                </TouchableOpacity>
+                <TextInput style={styles.inputFieldText}
+                           value={message}
+                           onChangeText={(text) => setMessage(text)}
+                           placeholder={'Enter your message'}
+                />
+                <TouchableOpacity style={styles.buttonContainer} onPress={sendMessage}>
                     <Text style={styles.buttonText}>✔</Text>
                 </TouchableOpacity>
             </View>
@@ -47,7 +63,7 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#cfad00',
+        backgroundColor: '#00d8ff',
         marginRight: 10,
         textAlign: 'center',
         textAlignVertical: 'center',
@@ -99,6 +115,14 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontWeight: 'bold',
+    },
+    cameraButtonContainer: {
+        marginRight: 10,
+        backgroundColor: '#ffc700',
+        borderRadius: 5,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
 

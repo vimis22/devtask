@@ -44,7 +44,7 @@ const LoginPage = ({ navigation }: any) => {
                 <Text style={styles.buttonText}>ENTER</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
+            <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
                 <Text style={styles.buttonText}>Don't have an Account? Signup</Text>
             </TouchableOpacity>
         </View>
