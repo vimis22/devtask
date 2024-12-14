@@ -1,18 +1,38 @@
-import React from 'react';
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
-import googleHandlerLogin from '../functionHandlers/GoogleHandlerLogin.tsx';
+import React, {useContext, useState} from 'react';
+import {LoginContext} from '../functionHandlers/LoginProvider';
+import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert} from 'react-native';
+import googleHandlerLogin from '../functionHandlers/GoogleHandlerLogin';
 
 const LoginPage = ({ navigation }: any) => {
+    const { login } = useContext(LoginContext) as { login: () => void };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const loginHandler = () => {
+        if (email === 'test@example.com' && password === 'password123') {
+            login && login();
+            navigation.navigate('RoomlistPage');
+        } else {
+            Alert.alert('Invalid credentials');
+        }
+    };
     return (
         <View style={styles.pageContainer}>
             <Text style={styles.sectionTitle}>LOGIN</Text>
 
             <Text style={styles.textInputLabel}>USERID:</Text>
 
-            <TextInput style={styles.inputFieldText} placeholder={'Please enter your UserID'}/>
+            <TextInput style={styles.inputFieldText}
+                       placeholder={'Please enter your UserID'}
+                       onChangeText={(text) => setEmail(text)}
+            />
             <Text style={styles.textInputLabel}>PASSWORD:</Text>
 
-            <TextInput style={styles.inputFieldText} placeholder={'Please enter your Password'} secureTextEntry={true}/>
+            <TextInput style={styles.inputFieldText}
+                       placeholder={'Please enter your Password'}
+                       secureTextEntry={true}
+                       onChangeText={(text) => setPassword(text)}
+            />
             <Text style={styles.textInputLabel}>ADDITIONAL LOGIN:</Text>
 
             <View style={styles.additionalLoginContainer}>
@@ -20,7 +40,7 @@ const LoginPage = ({ navigation }: any) => {
                 <Text style={styles.additionalLoginButtons}>FACEBOOK</Text>
             </View>
 
-            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('RoomlistPage')}>
+            <TouchableOpacity style={styles.buttonContainer} onPress={loginHandler}>
                 <Text style={styles.buttonText}>ENTER</Text>
             </TouchableOpacity>
 
