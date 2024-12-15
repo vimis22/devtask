@@ -1,6 +1,7 @@
 import {View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {useState} from 'react';
 import AttachProvider from '../functionHandlers/AttachProvider.tsx';
+import NotificationsProvider from '../functionHandlers/NotificationsProvider.tsx';
 
 const mockMessages = [
     {id: '1', sender: 'Vivek Misra', date: new Date().toISOString(), content: 'Message 1', icon: 'V', reciever: 'Henrik'},
@@ -9,6 +10,7 @@ const mockMessages = [
 const ChatPage = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState(mockMessages);
+    const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
     const attachProvider = AttachProvider({
         onImageSelected: (imageUri) => {
@@ -38,6 +40,17 @@ const ChatPage = () => {
             setMessage('');
         }
     };
+
+    const enableNotificationsHandler = () => {
+        console.log('Notifications enabled');
+        setNotificationsEnabled(false);
+    };
+
+    const disableNotificationsHandler = () => {
+        console.log('Notifications disabled');
+        setNotificationsEnabled(false);
+    };
+
     const renderMessageContainer = ({item}: any) => (
         <View style={styles.messageContainer}>
             <Text style={styles.profileIcon}>{item.icon}</Text>
@@ -59,6 +72,13 @@ const ChatPage = () => {
     );
     return (
         <View style={styles.pageContainer}>
+            {notificationsEnabled && (
+                <NotificationsProvider
+                    onEnable={enableNotificationsHandler}
+                    onDisable={disableNotificationsHandler}
+                />
+            )}
+
             <FlatList
                 data={messages}
                 renderItem={renderMessageContainer}
