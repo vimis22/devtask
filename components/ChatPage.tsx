@@ -1,5 +1,6 @@
 import {View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 import {useState} from "react";
+import AttachProvider from '../functionHandlers/AttachProvider.tsx';
 
 const mockMessages = [
     {id: '1', sender: 'Vivek Misra', date: new Date().toISOString(), content: 'Message 1', icon: 'V', reciever: 'Henrik'},
@@ -9,6 +10,22 @@ const ChatPage = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState(mockMessages);
 
+    const attachProvider = AttachProvider({
+        onImageSelected: (imageUri) => {
+            setMessages((prevMessages) => [
+                ...prevMessages,
+                {
+                    id: Date.now().toString(),
+                    sender: 'Vivek',
+                    date: new Date().toISOString(),
+                    content: '',
+                    icon: 'V',
+                    reciever: 'Henrik',
+                    image: imageUri,
+                },
+            ]);
+        },
+    });
     const sendMessage = () => {
         if (message.trim()){
             setMessages([...messages, {id: '3', sender: 'Vivek', date: new Date().toISOString(), content: message, icon: 'V', reciever: 'Henrik'}]);
@@ -33,7 +50,10 @@ const ChatPage = () => {
                 keyExtractor={item => item.id}
                 style={styles.messageListContainer}/>
             <View style={styles.inputContainer}>
-                <TouchableOpacity style={styles.cameraButtonContainer}>
+                <TouchableOpacity
+                    style={styles.cameraButtonContainer}
+                    onPress={attachProvider.addImage}
+                >
                     <Text style={styles.buttonText}>{'📷'}</Text>
                 </TouchableOpacity>
                 <TextInput style={styles.inputFieldText}
