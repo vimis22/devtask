@@ -6,8 +6,6 @@ const AttachProvider = ({onImageSelected}: {onImageSelected: (imageUri: string) 
         launchImageLibrary(
             {
                 mediaType: 'photo',
-                maxWidth: 300,
-                maxHeight: 300,
                 quality: 1,
             },
             (response) => {

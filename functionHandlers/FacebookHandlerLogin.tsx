@@ -14,7 +14,7 @@ const facebookHandlerLogin = async (navigation: any) => {
         }
         const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
         await auth().signInWithCredential(facebookCredential);
-        navigation.replace('RoomlistScreen');
+        navigation.replace('RoomlistPage');
     } catch (error) {
         console.error('Facebook Login Error:', error);
     }

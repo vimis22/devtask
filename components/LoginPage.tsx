@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {LoginContext} from '../functionHandlers/LoginProvider';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import googleHandlerLogin from '../functionHandlers/GoogleHandlerLogin';
-import facebookHandlerLogin from "../functionHandlers/FacebookHandlerLogin.tsx";
+import facebookHandlerLogin from '../functionHandlers/FacebookHandlerLogin';
 
 const LoginPage = ({ navigation }: any) => {
     const { login } = useContext(LoginContext) as { login: () => void };

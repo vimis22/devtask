@@ -1,5 +1,5 @@
-import {View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
-import {useState} from "react";
+import {View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {useState} from 'react';
 import AttachProvider from '../functionHandlers/AttachProvider.tsx';
 
 const mockMessages = [
@@ -28,7 +28,13 @@ const ChatPage = () => {
     });
     const sendMessage = () => {
         if (message.trim()){
-            setMessages([...messages, {id: '3', sender: 'Vivek', date: new Date().toISOString(), content: message, icon: 'V', reciever: 'Henrik'}]);
+            setMessages([...messages,
+                {id: '3',
+                sender: 'Vivek',
+                date: new Date().toISOString(),
+                content: message,
+                icon: 'V',
+                reciever: 'Henrik'}]);
             setMessage('');
         }
     };
@@ -37,7 +43,16 @@ const ChatPage = () => {
             <Text style={styles.profileIcon}>{item.icon}</Text>
             <View style={styles.messageContent}>
                 <Text style={styles.messageTime}>{item.sender} {item.date}</Text>
-                <Text style={styles.messageText}>{item.content}</Text>
+                {item.content ? (
+                    <Text style={styles.messageText}>{item.content}</Text>
+
+                ) : null}
+                {item.image ? (
+                    <Image style={styles.messageImage}
+                           source={{uri: item.image}}
+                           resizeMode={'contain'}
+                    />
+                ) : null}
                 <Text style={styles.messagePersonInfo}>Read by {item.reciever}</Text>
             </View>
         </View>
@@ -103,6 +118,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6e6e6',
         borderRadius: 5,
         padding: 10,
+    },
+    messageImage: {
+        width: '100%',
+        height: 200,
+        marginBottom: 5,
+        borderRadius: 5,
     },
     messagePersonInfo: {
         color: 'white',
