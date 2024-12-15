@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import {LoginContext} from '../functionHandlers/LoginProvider';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import googleHandlerLogin from '../functionHandlers/GoogleHandlerLogin';
+import facebookHandlerLogin from "../functionHandlers/FacebookHandlerLogin.tsx";
 
 const LoginPage = ({ navigation }: any) => {
     const { login } = useContext(LoginContext) as { login: () => void };
@@ -37,7 +38,7 @@ const LoginPage = ({ navigation }: any) => {
 
             <View style={styles.additionalLoginContainer}>
                 <Text style={styles.additionalLoginButtons} onPress={googleHandlerLogin}>GOOGLE</Text>
-                <Text style={styles.additionalLoginButtons}>FACEBOOK</Text>
+                <Text style={styles.additionalLoginButtons} onPress={facebookHandlerLogin}>FACEBOOK</Text>
             </View>
 
             <TouchableOpacity style={styles.buttonContainer} onPress={loginHandler}>
