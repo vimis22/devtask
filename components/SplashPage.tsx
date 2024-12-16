@@ -2,6 +2,14 @@ import React, {useEffect} from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
+/**
+ * SplashPage is a React functional component responsible for handling the initial loading
+ * screen of the application. It checks the authentication state of the user to determine
+ * the appropriate navigation route.
+ *
+ * @param {object} navigation - A navigation object used to navigate between screens.
+ * @returns {JSX.Element} The splash screen UI component.
+ */
 const SplashPage = ({ navigation }: any) => {
     useEffect(() => {
         const checkUserLogin = async () => {

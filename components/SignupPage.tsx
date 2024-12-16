@@ -1,6 +1,14 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 
+/**
+ * SignupPage is a functional component that renders a signup screen with input fields for user registration.
+ * It allows the user to input a User ID, Password, and Confirm Password, and navigate to other pages like Login and RoomlistPage.
+ *
+ * @param {object} props - The properties passed to the SignupPage component.
+ * @param {object} props.navigation - Navigation object for handling navigation between screens.
+ * @returns {JSX.Element} A React Native view containing signup form UI and navigation functionality.
+ */
 const SignupPage = ({ navigation }: any) => {
     return (
         <View style={styles.pageContainer}>

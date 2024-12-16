@@ -3,10 +3,33 @@ import {useState} from 'react';
 import AttachProvider from '../functionHandlers/AttachProvider.tsx';
 import NotificationsProvider from '../functionHandlers/NotificationsProvider.tsx';
 
+/**
+ * An array of mock message objects representing sample message data.
+ * Each object contains details about a single message including sender, receiver, date, content, and an icon.
+ */
 const mockMessages = [
     {id: '1', sender: 'Vivek Misra', date: new Date().toISOString(), content: 'Message 1', icon: 'V', reciever: 'Henrik'},
     {id: '2', sender: 'Henrik Stærkær', date: new Date().toISOString(), content: 'Message 2', icon: 'H', reciever: 'Vivek'},
 ];
+
+/**
+ * ChatPage component represents a chat interface in a React Native application.
+ *
+ * This component manages a real-time chat experience by providing the following functionalities:
+ * - Displaying a list of messages.
+ * - Sending text messages.
+ * - Sending images as messages.
+ * - Managing notifications state for the chat.
+ *
+ * The component uses React hooks to manage states such as messages, input message, and notification settings.
+ * It also handles image attachment and sending messages through predefined handlers.
+ *
+ * Key functionalities include:
+ * - Rendering a list of chat messages.
+ * - Providing an input field for entering and sending text messages.
+ * - Allowing image attachments using a camera button.
+ * - Managing notification toggling through a NotificationsProvider.
+ */
 const ChatPage = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState(mockMessages);

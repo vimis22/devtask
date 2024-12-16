@@ -4,6 +4,20 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert} from 'react-
 import googleHandlerLogin from '../functionHandlers/GoogleHandlerLogin';
 import facebookHandlerLogin from '../functionHandlers/FacebookHandlerLogin';
 
+/**
+ * LoginPage is a functional React component for rendering the login screen of the application.
+ * It allows users to input their credentials (email and password) and authenticate themselves.
+ * Additionally, it provides options for third-party login (Google and Facebook) and navigation to the signup page.
+ *
+ * @param {object} navigation - The navigation prop used to navigate between screens in the application.
+ *
+ * The component makes use of the `LoginContext` to call the `login` method for handling authentication.
+ * It utilizes state variables `email` and `password` to capture user inputs for login credentials.
+ * Upon successful login, the user is navigated to the "RoomlistPage". In case of invalid credentials, an alert is displayed.
+ *
+ * Users are also provided with alternative login options via Google and Facebook, though the respective handlers are not defined in the scope of this component.
+ * The screen includes a link to navigate to a signup page for users who do not have an account.
+ */
 const LoginPage = ({ navigation }: any) => {
     const { login } = useContext(LoginContext) as { login: () => void };
     const [email, setEmail] = useState('');
