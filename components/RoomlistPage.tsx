@@ -52,6 +52,7 @@ const RoomlistPage = ({navigation}: any) => {
                     <MessageNotifierProvider
                         onEnable={enableNotificationsHandler}
                         onDisable={disableNotificationsHandler}
+                        navigation={navigation}
                     />
                 )}
 

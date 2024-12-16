@@ -7,7 +7,11 @@ const rooms = [
     {id: '3', room: 'Room 3', receiver: 'Gert Lavsen'},
 ];
 
-const MessageNotifierProvider: React.FC<{onEnable: () => void; onDisable: () => void}> = ({onEnable, onDisable}) => (
+const MessageNotifierProvider: React.FC<{
+    onEnable: () => void;
+    onDisable: () => void;
+    navigation: any; // Tilføj navigation som prop
+}> = ({onEnable, onDisable, navigation}) => (
     <Modal visible={true} animationType="slide" transparent={true}>
         <View style={styles.notificationsContainer}>
             <View style={styles.notificationsContent}>
@@ -24,10 +28,14 @@ const MessageNotifierProvider: React.FC<{onEnable: () => void; onDisable: () => 
                     )}
                 />
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={[styles.buttonContent, styles.enable]} onPress={onEnable}>
+                    <TouchableOpacity style={[styles.buttonContent, styles.enable]}
+                        onPress={() => {onEnable(); navigation.navigate('ChatPage');}}>
                         <Text>Enable</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.buttonContent, styles.disable]} onPress={onDisable}>
+                    <TouchableOpacity
+                        style={[styles.buttonContent, styles.disable]}
+                        onPress={onDisable}
+                    >
                         <Text>Disable</Text>
                     </TouchableOpacity>
                 </View>
