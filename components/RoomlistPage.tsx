@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList, TouchableOpacity, StyleSheet, Button} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import {LoginContext} from '../functionHandlers/LoginProvider.tsx';
 
 //Der defineres data som skal stå på siden.
