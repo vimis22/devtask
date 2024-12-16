@@ -13,22 +13,37 @@ const mockMessages = [
 ];
 
 /**
- * ChatPage component represents a chat interface in a React Native application.
+ * ChatPage is a functional React component that renders a chat interface with features
+ * for sending messages, attaching images, and enabling/disabling notifications.
+ * It maintains state for the message input, list of messages, and notifications status.
  *
- * This component manages a real-time chat experience by providing the following functionalities:
- * - Displaying a list of messages.
- * - Sending text messages.
- * - Sending images as messages.
- * - Managing notifications state for the chat.
+ * State:
+ * - message: A string representing the current text input message from the user.
+ * - messages: An array of message objects representing the chat history.
+ * - notificationsEnabled: A boolean indicating whether notifications are enabled or disabled.
  *
- * The component uses React hooks to manage states such as messages, input message, and notification settings.
- * It also handles image attachment and sending messages through predefined handlers.
+ * Handlers:
+ * - sendMessage: Sends the current input message if it's not empty and updates the messages list.
+ * - enableNotificationsHandler: Enables notifications and logs the action.
+ * - disableNotificationsHandler: Disables notifications and logs the action.
  *
- * Key functionalities include:
- * - Rendering a list of chat messages.
- * - Providing an input field for entering and sending text messages.
- * - Allowing image attachments using a camera button.
- * - Managing notification toggling through a NotificationsProvider.
+ * Sub-components:
+ * - NotificationsProvider: Used to enable or disable notifications for the chat.
+ * - FlatList: Renders the list of messages with a custom `renderMessageContainer` function.
+ * - AttachProvider: Provides functionality to attach images through either the camera or image gallery.
+ *
+ * Props for renderMessageContainer:
+ * - item: Represents an individual message object containing properties like id, sender, date, content, icon, receiver, and image.
+ *
+ * Layout:
+ * - Message list is displayed in a FlatList container.
+ * - A text input field with buttons for sending messages, attaching images, and enabling camera functionality is provided.
+ * - NotificationsProvider is conditionally displayed based on the value of notificationsEnabled.
+ *
+ * Dependencies:
+ * - Requires styles object for styling components like pageContainer, inputContainer, etc.
+ * - Utilizes AttachProvider for handling attachment functionality.
+ * - Depends on FlatList for rendering chat messages.
  */
 const ChatPage = () => {
     const [message, setMessage] = useState('');

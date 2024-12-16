@@ -2,16 +2,16 @@ import React from 'react';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 /**
- * AttachProvider is a React functional component that provides image selection functionality
- * using the device's image library. It allows users to pick an image and triggers a callback
- * with the selected image's URI.
+ * AttachProvider is a functional component that provides functionality to attach images from the gallery or camera.
  *
- * @param {Object} props - The properties passed to the component.
- * @param {function(string): void} props.onImageSelected - A callback function invoked when
- * an image is selected. The function receives the URI of the selected image as an argument.
+ * @param {Object} props - The component's properties.
+ * @param {Function} props.onImageSelected - A callback function that is invoked with the URI of the selected image.
+ *                                            This function is called when either an image is selected from the gallery
+ *                                            or captured using the camera.
  *
- * @returns {Object} - Returns an object containing the `addImage` function, which can be
- * called to launch the image library for image selection.
+ * @returns {Object} - An object containing two functions:
+ *                     1. `addImage`: Opens the device's image gallery for the user to select an image.
+ *                     2. `addCamera`: Opens the device's camera for the user to capture an image.
  */
 const AttachProvider = ({onImageSelected}: {onImageSelected: (imageUri: string) => void}) => {
     const addImage = () => {
