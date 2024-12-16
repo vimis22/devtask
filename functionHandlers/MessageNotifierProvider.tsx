@@ -1,74 +1,89 @@
 import React from 'react';
-import {Modal, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Modal, StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 
 const rooms = [
-    {id: '1', room: 'Room 1', reciever: 'Vivek Misra'},
-    {id: '2', name: 'Room 2', reciever: 'Henrik Stærkær'},
+    {id: '1', room: 'Room 1', receiver: 'Vivek Misra'},
+    {id: '2', room: 'Room 2', receiver: 'Henrik Stærkær'},
+    {id: '3', room: 'Room 3', receiver: 'Gert Lavsen'},
 ];
-const MessageNotifierProvider = ({onEnable, onDisable}: {onEnable: () => void; onDisable: () => void}) => {
-    return(
-        <Modal visible={true} animationType="slide" transparent={true}>
+
+const MessageNotifierProvider: React.FC<{ onEnable: () => void; onDisable: () => void }> = ({ onEnable, onDisable }) => (
+    <Modal visible animationType="slide" transparent>
+        <View style={styles.modalBackground}>
             <View style={styles.notificationsContainer}>
-                <View style={styles.notificationsContent}>
-                    <Text style={styles.notificationsTitle}>Notification</Text>
-                    <Text style={styles.notificationsText}>You have recieved a notification from {item.reciever} in {item.room}</Text>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={[styles.buttonContent, styles.enable]} onPress={onEnable}>
-                            <Text>Enable</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[styles.buttonContent, styles.disable]} onPress={onDisable}>
-                            <Text>Disable</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                <Text style={styles.notificationsTitle}>Notifications</Text>
+                <FlatList
+                    data={rooms}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <View style={styles.notificationsContent}>
+                            <Text style={styles.notificationsText}>
+                                Notification from {item.receiver} in {item.room}
+                            </Text>
+                            <View style={styles.buttonContainer}>
+                                <TouchableOpacity style={[styles.button, styles.enable]} onPress={onEnable}>
+                                    <Text style={styles.buttonText}>Enable</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={[styles.button, styles.disable]} onPress={onDisable}>
+                                    <Text style={styles.buttonText}>Disable</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    )}
+                />
             </View>
-        </Modal>
-    );
-};
+        </View>
+    </Modal>
+);
 
 const styles = StyleSheet.create({
-    notificationsContainer: {
-        backgroundColor: 'white',
-        borderRadius: 10,
-        padding: 20,
-        width: '100%',
-        height: '18%',
-    },
-    notificationsContent: {
+    modalBackground: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
     },
+    notificationsContainer: {
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 20,
+        width: '90%',
+        maxHeight: '80%',
+    },
     notificationsTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+        textAlign: 'center',
+    },
+    notificationsContent: {
+        marginBottom: 20,
     },
     notificationsText: {
         fontSize: 16,
         textAlign: 'center',
-        marginBottom: 20,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%',
+        marginTop: 10,
     },
-    buttonContent: {
+    button: {
         flex: 1,
         padding: 10,
         alignItems: 'center',
         borderRadius: 5,
         marginHorizontal: 5,
-        color: 'white',
-        fontWeight: 'bold',
     },
     enable: {
         backgroundColor: '#009930',
     },
     disable: {
         backgroundColor: '#ff0000',
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
     },
 });
 
