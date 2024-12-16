@@ -53,13 +53,13 @@ const MessageNotifierProvider: React.FC<{
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={[styles.buttonContent, styles.enable]}
                         onPress={() => {onEnable(); navigation.navigate('ChatPage');}}>
-                        <Text>Enable</Text>
+                        <Text>Show</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={[styles.buttonContent, styles.disable]}
                         onPress={onDisable}
                     >
-                        <Text>Disable</Text>
+                        <Text>Ignore</Text>
                     </TouchableOpacity>
                 </View>
             </View>
