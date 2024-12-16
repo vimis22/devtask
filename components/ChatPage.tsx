@@ -67,9 +67,15 @@ const ChatPage = () => {
             <View style={styles.inputContainer}>
                 <TouchableOpacity
                     style={styles.cameraButtonContainer}
-                    onPress={attachProvider.addImage}
+                    onPress={attachProvider.addCamera}
                 >
                     <Text style={styles.buttonText}>{'📷'}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.cameraButtonContainer}
+                    onPress={attachProvider.addImage}
+                >
+                    <Text style={styles.buttonText}>{'🖼️'}</Text>
                 </TouchableOpacity>
                 <TextInput style={styles.inputFieldText}
                            value={message}
