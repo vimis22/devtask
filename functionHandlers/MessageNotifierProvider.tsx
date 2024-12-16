@@ -7,83 +7,78 @@ const rooms = [
     {id: '3', room: 'Room 3', receiver: 'Gert Lavsen'},
 ];
 
-const MessageNotifierProvider: React.FC<{ onEnable: () => void; onDisable: () => void }> = ({ onEnable, onDisable }) => (
-    <Modal visible={true} animationType="slide" transparent>
-        <View style={styles.modalBackground}>
-            <View style={styles.notificationsContainer}>
-                <Text style={styles.notificationsTitle}>Notifications</Text>
+const MessageNotifierProvider: React.FC<{onEnable: () => void; onDisable: () => void}> = ({onEnable, onDisable}) => (
+    <Modal visible={true} animationType="slide" transparent={true}>
+        <View style={styles.notificationsContainer}>
+            <View style={styles.notificationsContent}>
+                <Text style={styles.notificationsTitle}>Message Notification</Text>
                 <FlatList
                     data={rooms}
                     keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
-                        <View style={styles.notificationsContent}>
+                    renderItem={({item}) => (
+                        <View>
                             <Text style={styles.notificationsText}>
-                                Notification from {item.receiver} in {item.room}
+                                You have received a notification from {item.receiver} in {item.room}.
                             </Text>
-                            <View style={styles.buttonContainer}>
-                                <TouchableOpacity style={[styles.button, styles.enable]} onPress={onEnable}>
-                                    <Text style={styles.buttonText}>Enable</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={[styles.button, styles.disable]} onPress={onDisable}>
-                                    <Text style={styles.buttonText}>Disable</Text>
-                                </TouchableOpacity>
-                            </View>
                         </View>
                     )}
                 />
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={[styles.buttonContent, styles.enable]} onPress={onEnable}>
+                        <Text>Enable</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.buttonContent, styles.disable]} onPress={onDisable}>
+                        <Text>Disable</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     </Modal>
 );
 
 const styles = StyleSheet.create({
-    modalBackground: {
+    notificationsContainer: {
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 20,
+        width: '100%',
+        height: '18%',
+    },
+    notificationsContent: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
     },
-    notificationsContainer: {
-        backgroundColor: 'white',
-        borderRadius: 10,
-        padding: 20,
-        width: '90%',
-        maxHeight: '80%',
-    },
     notificationsTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
-        textAlign: 'center',
-    },
-    notificationsContent: {
-        marginBottom: 20,
     },
     notificationsText: {
         fontSize: 16,
         textAlign: 'center',
+        marginBottom: 20,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 10,
+        width: '100%',
     },
-    button: {
+    buttonContent: {
         flex: 1,
         padding: 10,
         alignItems: 'center',
         borderRadius: 5,
         marginHorizontal: 5,
+        color: 'white',
+        fontWeight: 'bold',
     },
     enable: {
         backgroundColor: '#009930',
     },
     disable: {
         backgroundColor: '#ff0000',
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
     },
 });
 

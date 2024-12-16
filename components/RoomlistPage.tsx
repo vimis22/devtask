@@ -1,7 +1,7 @@
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import React, { useState } from 'react';
 import {LoginContext} from '../functionHandlers/LoginProvider.tsx';
-import MessageNotifierProvider from '../functionHandlers/NotificationsProvider.tsx';
+import MessageNotifierProvider from '../functionHandlers/MessageNotifierProvider.tsx';
 
 const rooms = [
     {id: '1', name: 'Room 1', description: 'Conference Meetings'},
@@ -64,7 +64,6 @@ const RoomlistPage = ({navigation}: any) => {
                     </Text>
                 </View>
 
-                {/* Liste over rum */}
                 <FlatList
                     data={rooms}
                     renderItem={renderRoomsContainer}
