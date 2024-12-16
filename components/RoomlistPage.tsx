@@ -13,7 +13,7 @@ const rooms = [
 
 const RoomlistPage = ({navigation}: any) => {
     const loginContext = React.useContext(LoginContext);
-    const [notificationsEnabled, setNotificationsEnabled] = useState(false); // Start med at være skjult
+    const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
     const enableNotificationsHandler = () => {
         console.log('Notifications enabled');
