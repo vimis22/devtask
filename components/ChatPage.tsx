@@ -2,8 +2,8 @@ import {View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet} from 'rea
 
 const ChatPage = () => {
     const messages = [
-        {id: '1', sender: 'Vivek', date: new Date().toISOString(), content: 'Message 1', icon: 'V'},
-        {id: '2', sender: 'Henrik', date: new Date().toISOString(), content: 'Message 2', icon: 'H'},
+        {id: '1', sender: 'Vivek', date: new Date().toString(), content: 'Message 1', icon: 'V'},
+        {id: '2', sender: 'Henrik', date: new Date().toString(), content: 'Message 2', icon: 'H'},
     ];
 
     const renderMessageContainer = ({item}: any) => (
