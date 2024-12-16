@@ -1,6 +1,15 @@
 import React from 'react';
 import {Modal, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
+/**
+ * NotificationsProvider is a functional component that renders a modal dialog to prompt the user
+ * about enabling or disabling push notifications. This component provides two buttons with
+ * corresponding callback functions for user interaction.
+ *
+ * @param {Object} props - The props object for the NotificationsProvider component.
+ * @param {Function} props.onEnable - Callback function executed when the user chooses to enable notifications.
+ * @param {Function} props.onDisable - Callback function executed when the user chooses to disable notifications.
+ */
 const NotificationsProvider = ({onEnable, onDisable}: {onEnable: () => void; onDisable: () => void}) => {
     return(
         <Modal visible={true} animationType="slide" transparent={true}>

@@ -1,12 +1,35 @@
 import React from 'react';
 import {Modal, StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 
+/**
+ * Represents a list of rooms with associated information.
+ * Each room object includes an identifier, room name, and receiver name.
+ *
+ * @type {Array<{id: string, room: string, receiver: string}>}
+ */
 const rooms = [
     {id: '1', room: 'Room 1', receiver: 'Vivek Misra'},
     {id: '2', room: 'Room 2', receiver: 'Henrik Stærkær'},
     {id: '3', room: 'Room 3', receiver: 'Gert Lavsen'},
 ];
 
+/**
+ * MessageNotifierProvider is a React functional component that provides a notification interface
+ * within a modal. It allows users to handle notifications and toggle between enabling or disabling
+ * notifications through the provided control buttons.
+ *
+ * Props:
+ * - onEnable: A callback function that is invoked when the "Enable" button is pressed.
+ * - onDisable: A callback function that is invoked when the "Disable" button is pressed.
+ * - navigation: Navigation prop used to navigate to other screens within the application.
+ *
+ * Behavior:
+ * - Renders a modal component with a sliding animation.
+ * - Displays active notifications from a list of rooms with associated messages.
+ * - Includes two buttons, "Enable" and "Disable". The "Enable" button triggers the onEnable
+ *   callback and navigates to the "ChatPage" using the provided navigation prop. The "Disable"
+ *   button triggers the onDisable callback.
+ */
 const MessageNotifierProvider: React.FC<{
     onEnable: () => void;
     onDisable: () => void;

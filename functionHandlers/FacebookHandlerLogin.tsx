@@ -1,5 +1,16 @@
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from '@react-native-firebase/auth';
+
+/**
+ * Handles user login through Facebook authentication.
+ * This function uses Facebook's LoginManager to request permissions and authenticate the user.
+ * If the login is successful, it retrieves the user's access token and logs them in using Firebase authentication.
+ * Upon successful login, the user is navigated to the 'RoomlistPage'.
+ *
+ * @param {any} navigation - Navigation object to handle page transitions.
+ * @async
+ * @throws Will log an error message if the Facebook login or Firebase authentication fails.
+ */
 const facebookHandlerLogin = async (navigation: any) => {
     try {
         const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);

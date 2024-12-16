@@ -1,7 +1,15 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
-
+/**
+ * Handles user login through Google authentication.
+ * This function uses Google Signing WebClientId to request permissions and authenticate the user.
+ * If the login is succesful, it retrieves the user's access token and logs them in using Firebase authentication.
+ * Upon sucessful login, the user is navigated to the 'RoomlistPage'.
+ *
+ * @async
+ * @throws Will log an error message if the Google login or Firebase authentication fails.
+ */
 GoogleSignin.configure({
     webClientId: '147933906622-vccevsj9remeels3ukhmpfafqui1mpqh.apps.googleusercontent.com',
 });
