@@ -1,8 +1,8 @@
-import React from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
 import {LoginContext} from '../functionHandlers/LoginProvider.tsx';
+import MessageNotifierProvider from '../functionHandlers/NotificationsProvider.tsx';
 
-//Der defineres data som skal stå på siden.
 const rooms = [
     {id: '1', name: 'Room 1', description: 'Conference Meetings'},
     {id: '2', name: 'Room 2', description: 'Conference Meetings'},
@@ -10,36 +10,65 @@ const rooms = [
     {id: '4', name: 'Room 4', description: 'Conference Meetings'},
     {id: '5', name: 'Room 5', description: 'Conference Meetings'},
 ];
+
 const RoomlistPage = ({navigation}: any) => {
     const loginContext = React.useContext(LoginContext);
+    const [notificationsEnabled, setNotificationsEnabled] = useState(false); // Start med at være skjult
 
-    if(loginContext){
+    const enableNotificationsHandler = () => {
+        console.log('Notifications enabled');
+        setNotificationsEnabled(false);
+    };
+
+    const disableNotificationsHandler = () => {
+        console.log('Notifications disabled');
+        setNotificationsEnabled(false);
+    };
+
+    const showNotifications = () => {
+        setNotificationsEnabled(true);
+    };
+
+    if (loginContext) {
         const renderRoomsContainer = ({item}: any) => (
             <View style={styles.groupInfoContainer}>
-                <View style={styles.groupIcon}/>
+                <View style={styles.groupIcon} />
                 <View style={styles.groupInformation}>
                     <Text style={styles.groupName}>{item.name}</Text>
                     <Text style={styles.groupDescription}>{item.description}</Text>
                 </View>
-                <TouchableOpacity style={styles.buttonContainer}
-                                  onPress={() => navigation.navigate('ChatPage')}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => navigation.navigate('ChatPage')}
+                >
                     <Text style={styles.buttonText}>{'>'}</Text>
                 </TouchableOpacity>
             </View>
         );
-        //Hensigten med Flatlist er kunne tage data fra rooms og dermed duplikere det.
+
         return (
             <View style={styles.pageContainer}>
+                {notificationsEnabled && (
+                    <MessageNotifierProvider
+                        onEnable={enableNotificationsHandler}
+                        onDisable={disableNotificationsHandler}
+                    />
+                )}
+
                 <View style={styles.recentContainer}>
-                    <Text style={styles.recentGroupsTitle}>Recent:
-                        <TouchableOpacity>
+                    <Text style={styles.recentGroupsTitle}>
+                        Recent:
+                        <TouchableOpacity onPress={showNotifications}>
                             <Text style={styles.recentIcon}>{'RELOAD ⟳'}</Text>
                         </TouchableOpacity>
                     </Text>
                 </View>
+
+                {/* Liste over rum */}
                 <FlatList
-                    data={rooms} renderItem={renderRoomsContainer}
-                    keyExtractor={item => item.id}
+                    data={rooms}
+                    renderItem={renderRoomsContainer}
+                    keyExtractor={(item) => item.id}
                 />
             </View>
         );

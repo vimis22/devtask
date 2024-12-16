@@ -8,7 +8,7 @@ const rooms = [
 ];
 
 const MessageNotifierProvider: React.FC<{ onEnable: () => void; onDisable: () => void }> = ({ onEnable, onDisable }) => (
-    <Modal visible animationType="slide" transparent>
+    <Modal visible={true} animationType="slide" transparent>
         <View style={styles.modalBackground}>
             <View style={styles.notificationsContainer}>
                 <Text style={styles.notificationsTitle}>Notifications</Text>
