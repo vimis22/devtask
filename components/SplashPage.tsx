@@ -15,9 +15,9 @@ const SplashPage = ({ navigation }: any) => {
         const checkUserLogin = async () => {
             return auth().onAuthStateChanged(user => {
                 if (user) {
-                    navigation.replace('RoomlistPage'); // Naviger til RoomlistScreen hvis logget ind
+                    navigation.replace('RoomlistPage');
                 } else {
-                    navigation.replace('LoginPage'); // Naviger til LoginScreen hvis ikke logget ind
+                    navigation.replace('LoginPage');
                 }
             });
         };
