@@ -8,8 +8,8 @@ import NotificationsProvider from '../functionHandlers/NotificationsProvider.tsx
  * Each object contains details about a single message including sender, receiver, date, content, and an icon.
  */
 const mockMessages = [
-    {id: '1', sender: 'Vivek Misra', date: new Date().toISOString(), content: 'Message 1', icon: 'V', reciever: 'Henrik'},
-    {id: '2', sender: 'Henrik Stærkær', date: new Date().toISOString(), content: 'Message 2', icon: 'H', reciever: 'Vivek'},
+    {id: '1', sender: 'Vivek Misra', date: new Date().toString(), content: 'Message 1', icon: 'V', reciever: 'Henrik'},
+    {id: '2', sender: 'Henrik Stærkær', date: new Date().toString(), content: 'Message 2', icon: 'H', reciever: 'Vivek'},
 ];
 
 /**
@@ -42,7 +42,7 @@ const ChatPage = () => {
                 {
                     id: Date.now().toString(),
                     sender: 'Vivek',
-                    date: new Date().toISOString(),
+                    date: new Date().toString(),
                     content: '',
                     icon: 'V',
                     reciever: 'Henrik',
@@ -56,7 +56,7 @@ const ChatPage = () => {
             setMessages([...messages,
                 {id: '3',
                 sender: 'Vivek',
-                date: new Date().toISOString(),
+                date: new Date().toString(),
                 content: message,
                 icon: 'V',
                 reciever: 'Henrik'}]);
@@ -78,7 +78,8 @@ const ChatPage = () => {
         <View style={styles.messageContainer}>
             <Text style={styles.profileIcon}>{item.icon}</Text>
             <View style={styles.messageContent}>
-                <Text style={styles.messageTime}>{item.sender} {item.date}</Text>
+                <Text style={styles.messageTime}>{item.date}</Text>
+                <Text style={styles.messageTime}>{item.sender}</Text>
                 {item.content ? (
                     <Text style={styles.messageText}>{item.content}</Text>
 
