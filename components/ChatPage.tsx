@@ -4,6 +4,7 @@ import AttachProvider from '../functionHandlers/AttachProvider.tsx';
 import NotificationsProvider from '../functionHandlers/NotificationsProvider.tsx';
 
 /**
+ * @link https://reactnative.dev/docs/flatlist
  * An array of mock message objects representing sample message data.
  * Each object contains details about a single message including sender, receiver, date, content, and an icon.
  */
@@ -13,6 +14,8 @@ const mockMessages = [
 ];
 
 /**
+ * @link https://www.w3schools.com/jsref/jsref_trim_string.asp#:~:text=Description,both%20sides%20of%20a%20string.
+ * @link https://legacy.reactjs.org/docs/hooks-intro.html
  * ChatPage is a functional React component that renders a chat interface with features
  * for sending messages, attaching images, and enabling/disabling notifications.
  * It maintains state for the message input, list of messages, and notifications status.

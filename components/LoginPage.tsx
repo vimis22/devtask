@@ -5,6 +5,8 @@ import googleHandlerLogin from '../functionHandlers/GoogleHandlerLogin';
 import facebookHandlerLogin from '../functionHandlers/FacebookHandlerLogin';
 
 /**
+ * @link https://legacy.reactjs.org/docs/hooks-intro.html
+ * @link https://github.com/MidnightRocketEducation/msd-car-rental/blob/main/frontend/LoginScreen.tsx
  * LoginPage is a functional React component for rendering the login screen of the application.
  * It allows users to input their credentials (email and password) and authenticate themselves.
  * Additionally, it provides options for third-party login (Google and Facebook) and navigation to the signup page.

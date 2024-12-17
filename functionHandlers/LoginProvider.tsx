@@ -1,6 +1,7 @@
 import React, {createContext, useState} from 'react';
 
 /**
+ * @link https://reactnavigation.org/docs/auth-flow
  * LoginContext is a React Context used to manage and provide login state and authentication actions
  * within the application.
  *

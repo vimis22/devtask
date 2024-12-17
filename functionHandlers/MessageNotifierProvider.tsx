@@ -14,6 +14,7 @@ const rooms = [
 ];
 
 /**
+ * @link https://reactnative.dev/docs/modal
  * MessageNotifierProvider is a React functional component that provides a notification interface
  * within a modal. It allows users to handle notifications and toggle between enabling or disabling
  * notifications through the provided control buttons.

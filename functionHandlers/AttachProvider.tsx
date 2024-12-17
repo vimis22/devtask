@@ -2,6 +2,7 @@ import React from 'react';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 /**
+ * @link https://www.educative.io/answers/how-to-use-react-native-image-picker
  * AttachProvider is a functional component that provides functionality to attach images from the gallery or camera.
  *
  * @param {Object} props - The component's properties.

@@ -6,7 +6,8 @@ import auth from '@react-native-firebase/auth';
  * This function uses Google Signing WebClientId to request permissions and authenticate the user.
  * If the login is succesful, it retrieves the user's access token and logs them in using Firebase authentication.
  * Upon sucessful login, the user is navigated to the 'RoomlistPage'.
- *
+ * @link https://rnfirebase.io/auth/social-auth#facebook
+ * @link https://www.youtube.com/watch?v=J9qDaFTP9ao&t=443s
  * @async
  * @throws Will log an error message if the Google login or Firebase authentication fails.
  */

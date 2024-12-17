@@ -6,7 +6,7 @@ import auth from '@react-native-firebase/auth';
  * This function uses Facebook's LoginManager to request permissions and authenticate the user.
  * If the login is successful, it retrieves the user's access token and logs them in using Firebase authentication.
  * Upon successful login, the user is navigated to the 'RoomlistPage'.
- *
+ * @link https://rnfirebase.io/auth/social-auth#facebook
  * @param {any} navigation - Navigation object to handle page transitions.
  * @async
  * @throws Will log an error message if the Facebook login or Firebase authentication fails.

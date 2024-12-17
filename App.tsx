@@ -1,7 +1,8 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
+ * @link https://reactnavigation.org/docs/auth-flow
+ * @link https://github.com/MidnightRocketEducation/msd-car-rental/blob/main/frontend/App.tsx
  * @format
  */
 

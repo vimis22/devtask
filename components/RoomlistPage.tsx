@@ -4,6 +4,7 @@ import {LoginContext} from '../functionHandlers/LoginProvider.tsx';
 import MessageNotifierProvider from '../functionHandlers/MessageNotifierProvider.tsx';
 
 /**
+ * @link https://react.dev/reference/react/createContext#usage
  * Represents a list of rooms available for usage.
  * Each room object contains an ID, a name, and a description.
  *

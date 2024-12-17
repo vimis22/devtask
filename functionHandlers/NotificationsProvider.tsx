@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 /**
+ * @link https://reactnative.dev/docs/modal
  * NotificationsProvider is a functional component that renders a modal dialog to prompt the user
  * about enabling or disabling push notifications. This component provides two buttons with
  * corresponding callback functions for user interaction.
